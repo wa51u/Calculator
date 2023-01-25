@@ -1,0 +1,84 @@
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container{
+    margin: 30px;
+    background-color: grey;
+    text-align: center;
+    width: 480px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.screen{
+    background-color: darkgray;
+    width: 400px;
+    height: 100px;
+    
+}
+
+#buttonsContainer{
+  
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#numContainer{
+    height: 450px;
+    width: 280px;
+    margin: ;
+    background-color: darkgray;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.nums{
+    background-color: gray;
+    height: 90px;
+    width: 80px;
+    margin: auto;
+    font-weight: 100;
+   
+}
+#signContainer{
+    height: 450px;
+    width: 100px;
+    background-color: darkgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sign{
+    background-color: rgb(78, 78, 78);
+    height: 60px;
+    width: 80px;
+    font-weight: 300;
+}
+#clear{
+    background-color: red;
+}
+#equal{
+    background-color: green;
+}
+button{
+    font-size: 30px;
+}
