@@ -64,7 +64,6 @@ for (let i = 0; i <= 9; i++) {
 let allSigns = document.getElementsByClassName("sign");
 
 for (let sign of allSigns) {
-
 	sign.addEventListener("click", () => {
         console.log(sign);
 		if (sign.id === "clear") {
@@ -73,31 +72,27 @@ for (let sign of allSigns) {
             return;
         } else if (sign.id === "equal" && numB[0] == undefined){
 			return;
+		} else if (signType === 0) {
+			signType = sign.textContent;
+			screenFirstLine.innerText = (`${(numA.join(""))} ${sign.textContent}`);
+		} else if (sign.id === "equal") {
+			equal();
+		} else if (numA[0] != undefined && numB[0] != undefined && signType != 0) {
+			let tempsign = sign.textContent;
+			equal();
+			signType = tempsign;
 		} else {
-			if (signType === 0) {
-				signType = sign.textContent;
-				screenFirstLine.innerText = (`${(numA.join(""))} ${sign.textContent}`);
-			} else {
-				if (sign.id === "equal") {
-					equal();
-				} else if (numA[0] != undefined && numB[0] != undefined && signType != 0) {
-					let tempsign = sign.textContent;
-					equal();
-					signType = tempsign;
-				} else {
-					signType = sign.textContent;
-					screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
-				};
-			};
+			signType = sign.textContent;
+			screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
 		};
 	});
-}
+};
 
 let screenFirstLine = document.getElementById("screenFirstLine")
 let screenSecondLine = document.getElementById("screenSecondLine")
 
 function equal() {
-	let result = 0
+	let result = 0;
 	numA = numA.join("");
 	numB = numB.join("");
 	numA = parseInt(numA);
