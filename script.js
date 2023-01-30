@@ -9,9 +9,15 @@ for (i = 9; i >= 0; i--) {
 	const button = document.createElement("button");
 	button.innerText = i;
 	button.className = ("nums");
-	button.id = i;
+	button.id = ("num"+i);
 	numContainer.appendChild(button);
 }
+
+const decButton = document.createElement("button");
+decButton.innerText = ".";
+decButton.className = ("nums");
+decButton.id = "dec";
+numContainer.appendChild(decButton);
 
 function add(a, b) {
 	return a + b;
@@ -49,7 +55,7 @@ function operate(sign, ...arg) {
 
 for (let i = 0; i <= 9; i++) {
 	let tempName = (`numNr${i}`);
-	tempName = document.getElementById(i);
+	tempName = document.getElementById("num"+i);
 	tempName.addEventListener("click", () => {
 		if (signType === 0){
 			numA.push(i);
@@ -60,6 +66,21 @@ for (let i = 0; i <= 9; i++) {
 		};
 	});
 };
+
+
+decButton.addEventListener("click", () => {
+    if (signType === 0){
+        console.log(numA.indexOf(".") >= 0)
+        if (numA.indexOf(".") >= 0) {return}
+        numA.push(".");
+        screenFirstLine.innerText = (numA.join(""));
+    } else {
+        if (numB.indexOf(".") >= 0) {return}
+        numB.push(".");
+        screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
+
+    };
+});
 
 let allSigns = document.getElementsByClassName("sign");
 
@@ -95,8 +116,8 @@ function equal() {
 	let result = 0;
 	numA = numA.join("");
 	numB = numB.join("");
-	numA = parseInt(numA);
-	numB = parseInt(numB);
+	numA = parseFloat(numA);
+	numB = parseFloat(numB);
 	result = (operate(signType, numA, numB));
 	screenSecondLine.innerText = result;
 	clear();

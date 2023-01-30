@@ -28,8 +28,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
- 
-    
+
 }
 
 #buttonsContainer{
@@ -60,6 +59,7 @@ body {
     width: 80px;
     margin: auto;
     font-weight: 100;
+
    
 }
 #signContainer{
@@ -86,9 +86,13 @@ body {
 }
 button{
     font-size: 30px;
+    
 }
 
 .screenlines{
     height: 20px;
     font-size: 18px;
+}
+#num0{
+    width: 173.1312px;
 }
