@@ -24,6 +24,11 @@ body {
     background-color: darkgray;
     width: 400px;
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+ 
     
 }
 
@@ -85,5 +90,5 @@ button{
 
 .screenlines{
     height: 20px;
-
+    font-size: 18px;
 }
