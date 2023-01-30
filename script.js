@@ -107,13 +107,19 @@ for (let sign of allSigns){
         console.log(signType)
         
     }  else {
-        if (sign = "equal"){
+        if (sign.id === "equal" || numB === [] ){
             numA = numA.join("")
             numB = numB.join("")
             numA = parseInt(numA)
             numB = parseInt(numB)
             screenSecondLine.innerText = (operate(signType,numA,numB))
+            numA[0]=(operate(signType,numA,numB))
             clear()
+        } else {
+            console.log(sign)
+            signType = sign.textContent
+            screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`)
+
         }
     
     }
