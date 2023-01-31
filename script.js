@@ -4,7 +4,7 @@ let screenSecondValue = "";
 let numA = [];
 let numB = [];
 let signType = 0;
-let result = 0
+let result = 0;
 
 for (i = 9; i >= 0; i--) {
 	const button = document.createElement("button");
@@ -12,7 +12,10 @@ for (i = 9; i >= 0; i--) {
 	button.className = ("nums");
 	button.id = ("num"+i);
 	numContainer.appendChild(button);
-}
+	button.addEventListener("click", () => {
+			numsEventListener(button.textContent);
+	});
+};
 
 const decButton = document.createElement("button");
 decButton.innerText = ".";
@@ -22,24 +25,24 @@ numContainer.appendChild(decButton);
 
 function add(a, b) {
 	return a + b;
-}
+};
 
 function subtract(a, b) {
 	return a - b;
-}
+};
 
 function multiply(a, b) {
 	return a * b;
-}
+};
 
 function divide(a, b) {
 	if (b == 0) {
-		alert("div by 0 error")
+		alert("div by 0 error");
 		return ("");
 	} else {
 		return a / b;
-	}
-}
+	};
+};
 
 function operate(sign, ...arg) {
 	switch (sign) {
@@ -51,43 +54,29 @@ function operate(sign, ...arg) {
 			return multiply(...arg);
 		case "/":
 			return divide(...arg);
-	}
-}
-
-for (let i = 0; i <= 9; i++) {
-	let tempName = (`numNr${i}`);
-	tempName = document.getElementById("num"+i);
-	tempName.addEventListener("click", () => {
-		if (result == numA[0] &&  result != 0 && signType === 0 ){
-			clear(1)
-            console.log('rowna sie')} else 
-         if (signType === 0 ){
-			numA.push(i);
-			screenFirstLine.innerText = (numA.join(""));
-		} else {
-			numB.push(i);
-			screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
-		};
-	});
+	};
 };
 
-
 decButton.addEventListener("click", () => {
+	numsEventListener(".");
+});
+
+
+function numsEventListener(character){
+	console.log(character)
 	if (result == numA[0] &&  result != 0 && signType === 0 ){
 		clear(1)
-		console.log('rowna sie')
 	} else if (signType === 0){
-        console.log(numA.indexOf(".") >= 0)
-        if (numA.indexOf(".") >= 0) {return}
-        numA.push(".");
+        if (character === (".") && numA.indexOf(".") >= 0) {return}
+        numA.push(character);
         screenFirstLine.innerText = (numA.join(""));
     } else {
-        if (numB.indexOf(".") >= 0) {return}
-        numB.push(".");
+        if (character === (".") && numB.indexOf(".") >= 0) {return}
+        numB.push(character);
         screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
-
     };
-});
+}
+
 
 let allSigns = document.getElementsByClassName("sign");
 
