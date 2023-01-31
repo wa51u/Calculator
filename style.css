@@ -1,9 +1,14 @@
+*{
+    border-radius: 5px;
+}
+
 body {
     background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     
 }
 
@@ -17,6 +22,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    
+    
     
 }
 
@@ -78,11 +85,22 @@ body {
     width: 80px;
     font-weight: 300;
 }
+.sign:hover {
+    background-color: rgb(104, 103, 103)
+}
+
 #clear{
     background-color: red;
 }
+#clear:hover{
+    background-color: rgb(158, 0, 0);
+}
+
 #equal{
     background-color: green;
+}
+#equal:hover{
+    background-color: rgb(4, 212, 4);
 }
 button{
     font-size: 30px;
@@ -95,4 +113,7 @@ button{
 }
 #num0{
     width: 173.1312px;
+}
+button:hover {
+    background-color: rgb(78, 78, 78)
 }
