@@ -1,9 +1,10 @@
 const numContainer = document.querySelector("#numContainer");
-let screenFirstValue = "one";
-let screenSecondValue = "two";
+let screenFirstValue = "";
+let screenSecondValue = "";
 let numA = [];
 let numB = [];
 let signType = 0;
+let result = 0
 
 for (i = 9; i >= 0; i--) {
 	const button = document.createElement("button");
@@ -57,7 +58,10 @@ for (let i = 0; i <= 9; i++) {
 	let tempName = (`numNr${i}`);
 	tempName = document.getElementById("num"+i);
 	tempName.addEventListener("click", () => {
-		if (signType === 0){
+		if (result == numA[0] &&  result != 0 && signType === 0 ){
+			clear(1)
+            console.log('rowna sie')} else 
+         if (signType === 0 ){
 			numA.push(i);
 			screenFirstLine.innerText = (numA.join(""));
 		} else {
@@ -69,7 +73,10 @@ for (let i = 0; i <= 9; i++) {
 
 
 decButton.addEventListener("click", () => {
-    if (signType === 0){
+	if (result == numA[0] &&  result != 0 && signType === 0 ){
+		clear(1)
+		console.log('rowna sie')
+	} else if (signType === 0){
         console.log(numA.indexOf(".") >= 0)
         if (numA.indexOf(".") >= 0) {return}
         numA.push(".");
@@ -113,7 +120,6 @@ let screenFirstLine = document.getElementById("screenFirstLine")
 let screenSecondLine = document.getElementById("screenSecondLine")
 
 function equal() {
-	let result = 0;
 	numA = numA.join("");
 	numB = numB.join("");
 	numA = parseFloat(numA);

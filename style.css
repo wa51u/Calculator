@@ -1,5 +1,6 @@
 *{
     border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -35,6 +36,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    border: 1px solid black;
 
 }
 
@@ -51,13 +53,13 @@ body {
 #numContainer{
     height: 450px;
     width: 280px;
-    margin: ;
     background-color: darkgray;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    border: 1px solid black;
     
 }
 .nums{
@@ -77,6 +79,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    border: 1px solid black;
 }
 
 .sign{
@@ -108,8 +111,12 @@ button{
 }
 
 .screenlines{
-    height: 20px;
-    font-size: 18px;
+    height: 40px;
+    width: 380px;
+    font-size: 30px;
+    text-align: right;
+    margin: auto;
+
 }
 #num0{
     width: 173.1312px;
