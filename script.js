@@ -5,6 +5,9 @@ let numA = [];
 let numB = [];
 let signType = 0;
 let result = 0;
+let screenFirstLine = document.getElementById("screenFirstLine");
+let screenSecondLine = document.getElementById("screenSecondLine");
+let allSigns = document.getElementsByClassName("sign");
 
 for (i = 9; i >= 0; i--) {
 	const button = document.createElement("button");
@@ -13,7 +16,7 @@ for (i = 9; i >= 0; i--) {
 	button.id = ("num"+i);
 	numContainer.appendChild(button);
 	button.addEventListener("click", () => {
-			numsEventListener(button.textContent);
+		numsEventListener(button.textContent);
 	});
 };
 
@@ -46,14 +49,14 @@ function divide(a, b) {
 
 function operate(sign, ...arg) {
 	switch (sign) {
-		case "+":
-			return add(...arg);
-		case "-":
-			return subtract(...arg);
-		case "*":
-			return multiply(...arg);
 		case "/":
 			return divide(...arg);
+		case "*":
+			return multiply(...arg);
+		case "-":
+			return subtract(...arg);
+		case "+":
+			return add(...arg);	
 	};
 };
 
@@ -63,7 +66,6 @@ decButton.addEventListener("click", () => {
 
 
 function numsEventListener(character){
-	console.log(character)
 	if (result == numA[0] &&  result != 0 && signType === 0 ){
 		clear(1)
 	} else if (signType === 0){
@@ -73,16 +75,12 @@ function numsEventListener(character){
     } else {
         if (character === (".") && numB.indexOf(".") >= 0) {return}
         numB.push(character);
-        screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
+        screenSignRefresh();
     };
 }
 
-
-let allSigns = document.getElementsByClassName("sign");
-
 for (let sign of allSigns) {
 	sign.addEventListener("click", () => {
-        console.log(sign);
 		if (sign.id === "clear") {
 			clear(1);
         } else if (numA[0]== undefined && numB[0]== undefined){
@@ -100,15 +98,15 @@ for (let sign of allSigns) {
 			signType = tempsign;
 		} else {
 			signType = sign.textContent;
-			screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
+			screenSignRefresh();
 		};
 	});
 };
 
-let screenFirstLine = document.getElementById("screenFirstLine")
-let screenSecondLine = document.getElementById("screenSecondLine")
-
 function equal() {
+	if (numB[0] == undefined){
+		return
+	}
 	numA = numA.join("");
 	numB = numB.join("");
 	numA = parseFloat(numA);
@@ -128,3 +126,36 @@ function clear(hard) {
 		screenSecondLine.innerText = "";
 	};
 };
+
+document.addEventListener('keydown', (e) => {
+	if (e.key === 'Enter' || e.key === '=') {
+		// Add your code here
+		return equal();
+	} else if (e.key === 'Delete'){
+		clear(1);
+	} else if (e.key === '/'){
+		signType = "/";
+		screenSignRefresh()
+	} else if (e.key === '*'){
+		signType = "*";
+		screenSignRefresh()
+	} else if (e.key === '-'){
+		signType = "-";
+		screenSignRefresh()
+	} else if (e.key === '+'){
+		signType = "+";
+		screenSignRefresh()
+	}
+});
+
+document.addEventListener('keydown', (e) => {
+	for (let i=0; i <= 10; i++){
+		if (e.key == i){
+			numsEventListener(i);
+		}; 
+	};	
+});
+
+function screenSignRefresh() {
+	screenFirstLine.innerText = (`${(numA.join(""))} ${signType} ${(numB.join(""))}`);
+}
